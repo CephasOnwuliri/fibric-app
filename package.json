@@ -1,0 +1,48 @@
+{
+  "name": "fibric-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FIBRIC - Digital Tailoring Management System",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "electron": "concurrently -k \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@tensorflow-models/pose-detection": "^2.1.0",
+    "@tensorflow/tfjs": "^4.11.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.22.0",
+    "lucide-react": "^0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^10.0.7",
+    "electron": "^37.2.1",
+    "electron-builder": "^26.18.0",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
+    "vite": "^5.0.0",
+    "wait-on": "^9.5.1"
+  },
+  "build": {
+    "appId": "com.example.fibric",
+    "productName": "FIBRIC",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
